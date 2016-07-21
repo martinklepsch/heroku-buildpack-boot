@@ -53,7 +53,7 @@ fi
 
 export BOOT_LOCAL_REPO="$cache/.m2/repository"
 export BOOT_JVM_OPTIONS="-Xmx768m -Xss512k"
-export BOOT_VERSION=${BOOT_VERSION:-2.2.0}
+export BOOT_VERSION=${BOOT_VERSION:-2.6.0}
 
 if [[ -f "$cache/boot" ]]; then
     echo "-----> Using cached version of boot"
@@ -63,6 +63,7 @@ else
     chmod +x "$cache/boot.sh"
     echo " done"
     echo "-----> Bootstrapping..."
+    export BOOT_AS_ROOT=yes
     "$cache/boot.sh" -C help 2>&1 | grep Retrieving | indent
     "$cache/boot.sh" -C -V 2>&1 | indent
     mv "$cache/boot.sh" "$cache/boot"
