@@ -98,6 +98,7 @@ fi
 boot_cmd=${BOOTBUILD_CMD:-"boot build"}
 echo "-----> Running: $boot_cmd"
 export PATH="$build/.bootbin:$PATH"
+cat $build/build.boot
 (cd $build && $boot_cmd 2>&1 | indent); echo ""
 
 echo -n "-----> Copying jars..."
