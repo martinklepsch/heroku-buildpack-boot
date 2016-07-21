@@ -45,6 +45,7 @@ if [[ -d "$env_dir" ]]; then
     # load the buildpack config vars
     for key in BOOT_VERSION BOOTBUILD_CMD BOOTBUILD_CONFIG_WHITELIST; do
         if [[ -f "$env_dir/$key" ]]; then
+            echo "-----> Setting Env: $key"
             export "$key=$(cat "$env_dir/$key")"
         fi
     done
